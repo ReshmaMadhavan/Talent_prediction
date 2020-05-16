@@ -1,0 +1,204 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>EDU</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="row">
+<div class="col-lg-12" style="background-color:Red; color:white; text-align:right; ">
+<h5><span class="glyphicon glyphicon-envelope">edupro@gmail.com &nbsp </span><span class="glyphicon glyphicon-globe">learn &nbsp;</span><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<i class="fa fa-facebook">EdUpro &nbsp;</i>
+<i class="fa fa-instagram">EDUPRO_SmartSM </i></h5>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12" class="navbar-fixed-top" style=" text-align:center ; ">
+<h6 style="font-size: 36px; font-family: Segoe Script;"><b>EDUPRO SMART SCHOOL MANAGEMENT SYSTEM</b></h6>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="col-lg-12" style="border-style:solid; border-width:1px; border-width:1px; padding-top:50px; padding-right:100px; padding-bottom:100px; padding-left:100px; alignment-adjust:central;">
+<div id="container">
+<body>     
+    <div>                  
+    </div>     
+    <h2 align="center">"NOTIFICATION  OF TALENT RESULT</h2>  
+    <form action="send_sms.php" method="post" >  
+    <table id="table1"; cellspacing="5px" cellpadding="5%"; align="center">    
+       <tr>    
+              <td  align="right" class="style1">Mobile Number</td>    
+              <td class="style1"><input type="text" name="mno" /></td>    
+       </tr>    
+       <tr>    
+              <td align="right">Message</td>    
+              <td><textarea name="msg" id="smsMessage" cols="45" rows="15"></textarea>    
+         
+       
+            
+         <input <input type="submit" name="ok" id="sendMessage" value="Send Message" placeholder="SEND">    
+          
+
+		</div>
+       
+</div>
+</div>
+
+
+
+
+        </body>
+        </html>
+        
+    <style>
+	body {
+ margin: 0;
+ padding: 3em 0;
+ color: #fff;
+ background: Gray;
+ font-family: Georgia, Times New Roman, serif;
+}
+ 
+#container {
+ width: 600px;
+ background: #fff;
+ color: #555;
+ border: 3px solid #ccc;
+ -webkit-border-radius: 10px;
+ -moz-border-radius: 10px;
+ -ms-border-radius: 10px;
+ border-radius: 10px;
+ border-top: 3px solid #ddd;
+ padding: 1em 2em;
+ margin: 0 auto;
+ -webkit-box-shadow: 3px 7px 5px #000;
+ -moz-box-shadow: 3px 7px 5px #000;
+ -ms-box-shadow: 3px 7px 5px #000;
+ box-shadow: 3px 7px 5px #000;
+}
+ 
+ul {
+ list-style: none;
+ padding: 0;
+}
+ 
+ul > li {
+ padding: 0.12em 1em
+}
+ 
+label {
+ display: block;
+ float: left;
+ width: 130px;
+}
+ 
+input, textarea {
+ font-family: Georgia, Serif;
+}
+ </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+</body>
+</html>
+<?php
+if(isset($_POST['ok']))
+{
+	
+	$mobileno=$_POST['mno'];
+	$msg=$_POST['msg'];
+	
+	// Authorisation details.
+	$username = "reshmaradha1997@gmail.com";
+	$hash = "2c381977bb3fca78e3c09d4a2f6da4da8ff8f6826c86488b82f1a58018071d9e";
+
+	// Config variables. Consult http://api.textlocal.in/docs for more info.
+	$test = "0";
+
+	// Data for text message. This is the text message data.
+	$sender = "TXTLCL"; // This is who the message appears to be from.
+	$numbers = "$mobileno"; // A single number or a comma-seperated list of numbers
+	$message = "$msg";
+	// 612 chars or less
+	// A single number or a comma-seperated list of numbers
+	$message = urlencode($message);
+	$data = "username=".$username."&hash=".$hash."&message=".$message."&sender=".$sender."&numbers=".$numbers."&test=".$test;
+	$ch = curl_init('http://api.textlocal.in/send/?');
+	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$result = curl_exec($ch); // This is the result from the API
+	curl_close($ch);
+	
+}
+?>
+	

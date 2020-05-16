@@ -1,0 +1,67 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+passmark = 40
+
+df = pd.read_csv("E:\Book1.csv")
+
+df.head()
+
+df.tail()
+
+df.describe()
+
+df.isnull().sum()
+
+df.drop(['Id', 'Unnamed: 11'], axis=1, inplace=True)
+df.head()
+
+df.isnull().sum()
+
+df.describe()
+
+x=df["First Name"]
+y=df["Football Test"]
+
+
+plt.rcParams['figure.figsize']=(20,6)
+
+
+plt.scatter(x,y)
+plt.title("Football Talent Result")
+
+df["Football_Interested_students"] = np.where(df['Football Test']<passmark,'Fail', 'Pass')
+df.Football_Interested_students.value_counts()
+
+x=df["First Name"]
+y=df["Badminton Test"]
+
+plt.rcParams['figure.figsize']=(20,6)
+
+plt.scatter(x,y)
+plt.title("Badminton Test Result")
+
+df["Badminton_Interested_students"] = np.where(df['Badminton Test']<passmark, 'F', 'P')
+df.Badminton_Interested_students.value_counts()
+
+x=df["First Name"]
+y=df["Dance Test"]
+
+plt.rcParams['figure.figsize']=(20,6)
+
+plt.scatter(x,y)
+plt.title("Dance Test Result")
+
+df["Dance_Interested_students"] = np.where(df['Dance Test']<passmark, 'F', 'P')
+df.Dance_Interested_students.value_counts()
+
+df["Football_Interested_students"] = np.where(df['Football Test']<passmark, 'F',df['Contact'])
+df.Football_Interested_students.value_counts()
+
+df["Badminton_Interested_students"] = np.where(df['Badminton Test']<passmark, 'F',df['Contact'])
+df.Badminton_Interested_students.value_counts()
+
+df["Dance_Interested_students"] = np.where(df['Dance Test']<passmark, 'F',df['Contact'])
+df.Dance_Interested_students.value_counts()
